@@ -1,0 +1,38 @@
+﻿
+
+<!-- <h3>All registered users:</h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul> -->
+
+<div class="container">
+    <div class="menu">
+      <ul>
+        <li class="logo"><img src="../../assets/india.png"></li>
+        <li class="active">Home</li>        
+        <li><a class="logged-user"><span>{{currentUser.firstName}}</span></a></li>
+        <li><a (click)="logout()" class="signup-btn"><span>Sign Out</span></a></li>
+      </ul>
+    </div>
+    <div class="article">
+      <div class="article-row">
+        <div class="chart-wrapper">
+          <div>
+            <div id="chartContainer"></div>
+        </div>
+        </div>
+        <div class="chart-wrapper"></div>
+        <div class="chart-wrapper"></div>
+      </div>
+      <div class="article-row">
+        <div class="chart-wrapper"></div>
+        <div class="chart-wrapper"></div>
+      </div>
+        <!-- <div>Total number of cases : {{totalNOOfCases}}</div>
+         -->
+
+    </div>
+  </div>

@@ -1,6 +1,4 @@
-﻿
-
-<!-- <h3>All registered users:</h3>
+﻿<!-- <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
@@ -9,30 +7,187 @@
 </ul> -->
 
 <div class="container">
-    <div class="menu">
-      <ul>
-        <li class="logo"><img src="../../assets/india.png"></li>
-        <li class="active">Home</li>        
-        <li><a class="logged-user"><span>{{currentUser.firstName}}</span></a></li>
-        <li><a (click)="logout()" class="signup-btn"><span>Sign Out</span></a></li>
-      </ul>
+  <div class="menu">
+    <ul>
+      <li class="logo"><img src="/covid/assets/india.png"></li>
+      <li class="active">Home</li>
+      <li><a class="logged-user"><span>{{currentUser.firstName}}</span></a></li>
+      <li><a (click)="logout()" class="signup-btn"><span>Sign Out</span></a></li>
+    </ul>
+  </div>
+  <div class="article">
+    <div class="title-style">
+      COVID-19 Dashboard
+      <i class="fa fa-bar-chart chart-icon" aria-hidden="true"></i>
     </div>
-    <div class="article">
-      <div class="article-row">
-        <div class="chart-wrapper">
-          <div>
-            <div id="chartContainer"></div>
+    <div class="grey-style">Graphical View</div>
+    <div>
+      <div class="top-container">
+        <h2 style="text-align: center; font-weight: bold; letter-spacing: 10px;">INDIA</h2>
+        <div class="row dashboard world">
+          <div class="col-4 col-sm-4 col-md-3 text-center">
+            <p class="confirmed number">{{totalNOOfCases}}</p>
+            <!-- <p class="confirmed diff">(+10,420)</p> -->
+            <p>Confirmed</p>
+          </div>
+          <div class="col-4 col-sm-4 col-md-2 text-center">
+            <p class="death red number">{{totalNoOfDeaths}}</p>
+            <!-- <p class="death diff">(+766)</p> -->
+            <p>Deaths</p>
+          </div>
+          <div class="col-4 col-sm-4 col-md-2 text-center">
+            <p class="green number">{{totalNoOfRecovery}}</p>
+            <!-- <p class="released diff">(+22,031)</p> -->
+            <p>Recovered</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-3 text-center">
+            <p class="fatality number">{{fatalityRate}}%
+              <i class="fa fa-arrow-up red" aria-hidden="true"></i>
+            </p>
+            <p>Mortality Rate</p>
+          </div>
+          <div class="col-6 col-sm-6 col-md-2 text-center" style="border-right: none">
+            <p class="country number">29</p>
+            <!-- <p class="country diff">(-)</p> -->
+            <p>Affected States</p>
+          </div>
         </div>
-        </div>
-        <div class="chart-wrapper"></div>
-        <div class="chart-wrapper"></div>
       </div>
-      <div class="article-row">
-        <div class="chart-wrapper"></div>
-        <div class="chart-wrapper"></div>
+    </div>
+    <div class="article-row">
+      <div class="chart-wrapper">
+        <div style="font-size: 130%; font-weight: bold;">TOTAL CASES</div>
+        <div id="chartContainer"></div>
       </div>
-        <!-- <div>Total number of cases : {{totalNOOfCases}}</div>
-         -->
+      <div class="chart-wrapper">
+        <span class="green" style="font-size: 130%; font-weight: bold;">CURED</span>
+        <div id="chartContainerCured"></div>
+      </div>
+      <div class="chart-wrapper">
+        <span class="red" style="font-size: 130%; font-weight: bold;">DEATHS</span>
+        <div id="chartContainerDeaths"></div>
+      </div>
+    </div>
+    <div class="article-row">
+      <div class="chart-wrapper" style="max-width: 200px;">
+        <ul>
+          <li (mouseenter)="OnStateHover('Andhra Pradesh')" class="states">Andhra Pradesh</li>
+          <li (mouseenter)="OnStateHover('Arunachal Pradesh')" class="states">Arunachal Pradesh</li>
+          <li (mouseenter)="OnStateHover('Assam')" class="states">Assam</li>
+          <li (mouseenter)="OnStateHover('Bihar')" class="states">Bihar</li>
+          <li (mouseenter)="OnStateHover('Chhattisgarh')" class="states">Chhattisgarh</li>
+          <li (mouseenter)="OnStateHover('Goa')" class="states">Goa</li>
+          <li (mouseenter)="OnStateHover('Gujarat')" class="states">Gujarat</li>
+          <li (mouseenter)="OnStateHover('Haryana')" class="states">Haryana</li>
+          <li (mouseenter)="OnStateHover('Himachal Pradesh')" class="states">Himachal Pradesh</li>
+          <li (mouseenter)="OnStateHover('Jharkhand')" class="states">Jharkhand</li>
+          <li (mouseenter)="OnStateHover('Karnataka')" class="states">Karnataka</li>
+          <li (mouseenter)="OnStateHover('Kerala')" class="states">Kerala</li>
+          <li (mouseenter)="OnStateHover('Madhya Pradesh')" class="states">Madhya Pradesh</li>
+          <li (mouseenter)="OnStateHover('Maharashtra')" class="states">Maharashtra</li>
+          <li (mouseenter)="OnStateHover('Manipur')" class="states">Manipur</li>
+          <li (mouseenter)="OnStateHover('Meghalaya')" class="states">Meghalaya</li>
+          <li (mouseenter)="OnStateHover('Mizoram')" class="states">Mizoram</li>
+          <li (mouseenter)="OnStateHover('Nagaland')" class="states">Nagaland</li>
+          <li (mouseenter)="OnStateHover('Odisha')" class="states">Odisha</li>
+        </ul>
+      </div>
+      <div class="chart-wrapper">
+        <div id="barChartContainer" style="width: 100%;"></div>
+      </div>
 
+      <div class="chart-wrapper" style="max-width: 200px;">
+        <ul>   
+          <li class="states">Punjab</li>
+          <li class="states">Rajasthan</li>
+          <li class="states">Sikkim</li>
+          <li class="states">Tamil Nadu</li>
+          <li class="states">Telangana</li>
+          <li class="states">Tripura</li>
+          <li class="states">Uttar Pradesh</li>
+          <li class="states">Uttarakhand</li>
+          <li class="states">West Bengal</li>
+          <li class="states">Andaman and Nicobar Islands</li>
+          <li class="states">Chandigarh</li>
+          <li class="states">Dadra and Nagar Haveli</li>
+          <li class="states">Delhi</li>
+          <li class="states">Jammu and Kashmir</li>
+          <li class="states">Ladakh</li>
+          <li class="states">Lakshadweep</li>
+          <li class="states">Puducherry</li>
+        </ul>
+      </div>
+      <!-- <div class="chart-wrapper"></div> -->
+    </div>
+    <!-- <div>Total number of cases : {{totalNOOfCases}}</div>
+         -->
+    <div class="article-row" style="height: 200px;">
+      <div class="chart-wrapper zoom">
+        <div style="height: 80%; overflow: auto;">
+          <h5>Coronavirus LIVE Updates:</h5>
+          Only those cases who don’t have facilities at home will go for institutional isolation, says Delhi LG
+        </div>
+        <div style="height: 20%; background: #9999;">
+          <a target="_blank"
+            href="https://indianexpress.com/article/india/coronavirus-india-latest-news-today-live-updates-corona-covid-19-cases-tracker-in-india-state-wise-covid-19-vaccine-lockdown-update-6467185/">
+            <span>Read More
+              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="chart-wrapper zoom">
+        <div style="height: 80%;">
+          <h5>News Feed:</h5>
+          Glenmark launches Covid-19 drug after DCGI nod.
+        </div>
+        <div style="height: 20%; background: #9999;">
+          <a target="_blank"
+            href="https://www.hindustantimes.com/india-news/glenmark-launches-covid-19-drug-after-dcgi-nod/story-kwOjjcAbv7zQ1Sksw8qXbP.html">
+            <span>Read More
+              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="chart-wrapper zoom">
+        <div style="height: 80%;">
+          <h5>Ray of Hope:</h5>
+          Coronavirus: How India's Kerala state 'flattened the curve'.
+        </div>
+        <div style="height: 20%; background: #9999;">
+          <a target="_blank" href="https://www.bbc.com/news/world-asia-india-52283748">
+            <span>Read More
+              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="article-row" style="height: 200px;">
+      <div class="chart-wrapper">
+        <a target="_blank" href="https://www.pmcares.gov.in/en/">
+          <img src="/covid/assets/pmcare_donate.jpg" alt="pmcare_donate">
+        </a>
+      </div>
+      <div class="chart-wrapper">
+        <div style="height: 80%;">
+          <h5>MHA Guidelines</h5>
+          New guidelines for the extended period of National Lockdown with effect from 1st June 2020
+        </div>
+        <div style="height: 20%; background: #9999;">
+          <a target="_blank" href="https://static.mygov.in/rest/s3fs-public/mygov_159098900251307401.pdf">
+            <span>Read More
+              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <a target="_blank" href="https://transformingindia.mygov.in/covid-19">
+          <img src="/covid/assets/transformingindia.jpg" alt="transformingindia">
+        </a>
+      </div>
     </div>
   </div>
+</div>

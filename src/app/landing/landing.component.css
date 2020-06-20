@@ -1,7 +1,8 @@
 .container{
-	width: 100%;
+	width: 100% !important;
     height: 100%;
     background: #fff;
+    /* background-image: url('../../assets/bg.jpg'); */
     /* background: #f5f5f5; */
 	/* background: #42455a; */
 }
@@ -35,7 +36,7 @@
 
 .signin-btn{
     top: 40px;
-    right: 20%;
+    right: 22%;
     position: absolute;
     text-decoration: none;
     color:#42455a;
@@ -53,7 +54,7 @@
 
 .signup-btn{
     top: 40px;
-    right: 10%;
+    right: 12%;
     position: absolute;
     text-decoration: none;
     color:#42455a;
@@ -72,15 +73,15 @@
 .signin-btn:hover, .signup-btn:hover{
     color: #19dafa;
     text-decoration: none;
-    /* top:39px;
-    box-shadow: 1px 1px 0px 0px grey; */
+    top:39px;
+    box-shadow: 2px 3px 6px 0px grey;
 }
 
 .banner{
     width: 80%;
     height: 70%;
     top: 25%;
-    left: 130px;
+    left: 10%;
     position: absolute;
     color: white;
     /* background-image: url("flag.png");
@@ -95,6 +96,7 @@
 
 .app-text h1{
     font-size: 43px;
+    font-weight: bold;
     width: 100%;
     position: relative;
     margin-left: 40px;
@@ -163,11 +165,11 @@ small{
     background: linear-gradient(to right, #db1bf6, #19d7f8);
 }
 
-/* .quick-links:hover{
+.quick-links:hover{
     left: 3px;
     bottom:3px;
     box-shadow: 0px 0px 3px 3px grey;
-} */
+} 
 
 .quick-links ul{
     display: inline-flex;
@@ -197,7 +199,7 @@ small{
 }
 
 .social-icons{
-    right: 10%;
+    right: 12%;
     bottom: 35px;
     position: absolute;
 }

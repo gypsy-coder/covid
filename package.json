@@ -5,6 +5,7 @@
         "ng": "ng",
         "start": "ng serve --port 4444",
         "build": "ng build",
+        "buildProd": "ng build --prod --build-optimizer --base-href=https://gypsy-coder.github.io/covid/",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
